@@ -13,6 +13,9 @@ interface Props {
 
 const page = async ({ searchParams }: Props) => {
 
+    console.log('HERE',searchParams?.query, searchParams?.category);
+    
+
     const resources = await getResources({
         query: searchParams?.query || '',
         category: searchParams?.category || '',
@@ -43,7 +46,7 @@ const page = async ({ searchParams }: Props) => {
         <section className='flex-center mt-6 w-full flex-col sm:mt-20'>
            
         <Header 
-        title="Resources"
+        title='Resources'
         query={searchParams?.query || ''}
         category={searchParams?.category || ''}
         
@@ -53,8 +56,9 @@ const page = async ({ searchParams }: Props) => {
           {
              resources?.length > 0 ? (
                  resources.map((resource: any) => (
-                     <ResourceCard 
-                     key={resource.title}
+                   
+                    <ResourceCard 
+                     key={resource._id}
                      title={resource.title}
                      id={resource._id}
                      image={resource.image}
@@ -62,6 +66,7 @@ const page = async ({ searchParams }: Props) => {
                      downloadLink={resource.downloadLink}
                      
                      />
+                   
                  ) )
              ) : (
                  <p className='body-regular text-white-400'>

@@ -41,7 +41,7 @@ export const getResources = async (params: GetResourcesParams) => {
         query,
         category,
         page: parseInt(page),
-      })}{
+      })} {
         title,
         _id,
         downloadLink,
@@ -53,6 +53,7 @@ export const getResources = async (params: GetResourcesParams) => {
     );
 
     return resources;
+    
   } catch (error) {
     console.log(error);
   }
